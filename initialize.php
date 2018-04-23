@@ -8,7 +8,7 @@ require_once('credential.php');
 require_once('FirePHP.class.php');
 
 foreach(glob('class/*.class.php') as $file) {
-  require_once($file);
+    require_once($file);
 }
 
 $database = db_connect();
