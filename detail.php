@@ -64,6 +64,10 @@ $cap = Caps::find_by_id($id);
                 <dt>Opening</dt>
                 <dd><?php echo h($cap->opening); ?></dd>
             </dl>
+            <dl>
+                <dt>Image</dt>
+                <dd><?php echo '<img src="data:image;base64,' . $cap->select_by_sql("SELECT image FROM CAPS")["image"] . ' "> '; ?></dd>
+            </dl>
         </div>
     </div>
 </div>

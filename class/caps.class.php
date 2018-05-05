@@ -24,17 +24,18 @@ class Caps {
   }
 
   static public function find_by_sql($sql) {
-    $result = self::$database->query($sql);
-    if(!$result) exit("Query failed");
+      $result = self::$database->query($sql);
+      if(!$result)
+          exit("Query failed");
 
-    $object_array = [];
-    while($record = $result->fetch_assoc()) {
-      $object_array[] = self::instantiate($record);
-    }
+      $object_array = [];
+      while($record = $result->fetch_assoc())
+          $object_array[] = self::instantiate($record);
 
-    $result->free();
 
-    return $object_array;
+      $result->free();
+
+      return $object_array;
   }
 
   static protected function instantiate($record) {
@@ -85,10 +86,10 @@ class Caps {
       $attribute_pairs[] = "{$key}='{$value}'";
     }
 
-    $sql = "UPDATE caps SET ";
+    $sql = "UPDATE CAPS SET ";
     $sql .= join(', ', $attribute_pairs);
-    $sql .= "WHERE id='" . self::$database->escape_string($this->id) . "' ";
-    $sql .= "LIMIT 1;";
+    $sql .= " WHERE id='" . self::$database->escape_string($this->id) . "'";
+    $sql .= " LIMIT 1;";
     $result = self::$database->query($sql);
 
     $firephp = FirePHP::getInstance(true);
@@ -96,6 +97,24 @@ class Caps {
 
     return $result;
   }
+
+  public function update_by_sql($sql) {
+      $sql .= " WHERE id='" . self::$database->escape_string($this->id) . "'";
+      $sql .= " LIMIT 1;";
+      $result = self::$database->query($sql);
+
+      return $result;
+  }
+
+  public function select_by_sql($sql) {
+      $sql .= " WHERE id='" . self::$database->escape_string($this->id) . "'";
+      $sql .= " LIMIT 1;";
+      $result = self::$database->query($sql);
+      if(!$result)
+          exit("Query failed");
+
+      return $result->fetch_assoc();
+}
 
   public function merge_attributes($args=[]) {
     foreach($args as $key => $value) {
