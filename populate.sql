@@ -1,0 +1,32 @@
+DROP TABLE IF EXISTS CAPS;
+
+CREATE TABLE caps (
+	id INT(8) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	brewer VARCHAR(255),
+	name VARCHAR(255),
+	type VARCHAR(255),
+	country VARCHAR(255),
+	color VARCHAR(255),
+	othercolor VARCHAR(255),
+	textcolor VARCHAR(255),
+	rimcolor VARCHAR(255),
+	text VARCHAR(255),
+	opening VARCHAR(255),
+	letter VARCHAR(255),
+	creature VARCHAR(255),
+	plant VARCHAR(255),
+	wheat VARCHAR(255),
+	cup VARCHAR(255),
+	people VARCHAR(255),
+	place VARCHAR(255),
+	nature VARCHAR(255),
+	building VARCHAR(255),
+	sport VARCHAR(255),
+	vehicle VARCHAR(255),
+	coat VARCHAR(255),
+	bodypart VARCHAR(255),
+	flag VARCHAR(255),
+	weapon VARCHAR(255),
+	religion VARCHAR(255),
+    image LONGBLOB
+);
